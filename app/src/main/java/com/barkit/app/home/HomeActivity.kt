@@ -1,11 +1,12 @@
-package com.barkit.app
+package com.barkit.app.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.barkit.app.R
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
     }
 }
