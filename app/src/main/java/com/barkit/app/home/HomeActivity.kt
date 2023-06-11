@@ -1,5 +1,6 @@
 package com.barkit.app.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -10,9 +11,10 @@ import com.barkit.app.core.domain.model.Category
 import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.ActivityHomeBinding
+import com.barkit.app.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), ProductAdapter.OnClickListener {
     private lateinit var binding: ActivityHomeBinding
 
     private val homeViewModel by viewModel<HomeViewModel>()
@@ -37,6 +39,12 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onProductClick(product: Product) {
+        val detailIntent = Intent(this, DetailActivity::class.java)
+        detailIntent.putExtra(DetailActivity.EXTRA_PRODUCT_ID, product.productId)
+        startActivity(detailIntent)
+    }
+
     private fun populateCategories(categories: List<Category>?) {
         if (!categories.isNullOrEmpty()) {
             val categoryAdapter = CategoryAdapter()
@@ -58,6 +66,7 @@ class HomeActivity : AppCompatActivity() {
         if (!products.isNullOrEmpty()) {
             val productAdapter = ProductAdapter()
             productAdapter.submitList(products)
+            productAdapter.setOnClickListener(this)
 
             with(binding.rvProducts) {
                 val layoutManager = GridLayoutManager(this@HomeActivity, 2)

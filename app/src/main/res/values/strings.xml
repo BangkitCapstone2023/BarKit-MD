@@ -17,4 +17,8 @@
     <string name="search_hint">Find what you need...</string>
     <string name="category">Category</string>
     <string name="discover_products">Discover Products</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="stock">Stock</string>
+    <string name="subcategory">Subcategory</string>
+    <string name="description">Description</string>
 </resources>

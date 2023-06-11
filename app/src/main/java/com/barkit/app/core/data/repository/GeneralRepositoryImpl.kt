@@ -4,16 +4,17 @@ import android.util.Log
 import com.barkit.app.core.data.ApiService
 import com.barkit.app.core.data.SessionManager
 import com.barkit.app.core.domain.model.DashboardData
-import com.barkit.app.core.domain.repository.RenterRepository
+import com.barkit.app.core.domain.model.ProductDetail
+import com.barkit.app.core.domain.repository.GeneralRepository
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.utils.toDomainModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class RenterRepositoryImpl(
+class GeneralRepositoryImpl(
     private val apiService: ApiService,
     private val sessionManager: SessionManager
-) : RenterRepository {
+) : GeneralRepository {
     override fun getDashboard(): Flow<Resource<DashboardData>> = flow {
         emit(Resource.Loading())
 
@@ -24,6 +25,20 @@ class RenterRepositoryImpl(
             emit(Resource.Success(dashboardData))
         } catch (e: Exception) {
             Log.e(TAG, "getAllProducts: $e")
+            emit(Resource.Error(e.toString()))
+        }
+    }
+
+    override fun getProductDetail(id: String): Flow<Resource<ProductDetail>> = flow {
+        emit(Resource.Loading())
+
+        try {
+            val response = apiService.getProductDetail(id)
+            val productDetail = response.data.toDomainModel()
+
+            emit(Resource.Success(productDetail))
+        } catch (e: Exception) {
+            Log.e(TAG, "getProductDetail: $e")
             emit(Resource.Error(e.toString()))
         }
     }
