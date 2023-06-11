@@ -3,12 +3,12 @@ package com.barkit.app.authentication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.barkit.app.R
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.ActivityLoginBinding
+import com.barkit.app.home.HomeActivity
 import com.barkit.app.utils.isValidEmail
 import com.barkit.app.utils.isValidPassword
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -54,6 +54,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             when (it) {
                                 is Resource.Success -> {
                                     Log.d(TAG, "Login Success: ${it.data?.renter?.fullName}")
+                                    val homeIntent =
+                                        Intent(this@LoginActivity, HomeActivity::class.java)
+                                    startActivity(homeIntent)
                                 }
 
                                 is Resource.Loading -> {

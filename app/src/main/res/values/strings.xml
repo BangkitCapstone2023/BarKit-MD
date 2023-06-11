@@ -11,4 +11,10 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="gender">Gender</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="welcome">Welcome!</string>
+    <string name="please_login">Please login to your account!</string>
+    <string name="search_hint">Find what you need...</string>
+    <string name="category">Category</string>
+    <string name="discover_products">Discover Products</string>
 </resources>
