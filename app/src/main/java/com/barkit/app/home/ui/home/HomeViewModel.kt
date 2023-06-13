@@ -1,4 +1,4 @@
-package com.barkit.app.home
+package com.barkit.app.home.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

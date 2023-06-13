@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.barkit.app.R
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.ActivityRegisterBinding
@@ -26,7 +27,10 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener,
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.rgGender.setOnCheckedChangeListener(this)
         binding.btnRegister.setOnClickListener(this)
+
+        setLoading(false)
     }
 
     override fun onClick(v: View) {
@@ -93,14 +97,30 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener,
                         when (it) {
                             is Resource.Success -> {
                                 Log.d(TAG, "Register Success!")
+                                setLoading(false)
+                                Toast.makeText(
+                                    this@RegisterActivity,
+                                    "Register Sukses! Silahkan login!",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+
+                                finish()
                             }
 
                             is Resource.Loading -> {
                                 Log.d(TAG, "Register Process...")
+                                setLoading(true)
                             }
 
                             is Resource.Error -> {
                                 Log.e(TAG, "Register Error: ${it.message}")
+                                Toast.makeText(
+                                    this@RegisterActivity,
+                                    "Register Error: ${it.message}",
+                                    Toast.LENGTH_LONG
+                                )
+                                    .show()
                             }
                         }
                     }
@@ -109,14 +129,18 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener,
         }
     }
 
-    private companion object {
-        const val TAG = "RegisterActivity"
-    }
-
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         when (checkedId) {
             R.id.rb_male -> gender = "Male"
             R.id.rb_female -> gender = "Female"
         }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.progressBar.isVisible = isLoading
+    }
+
+    private companion object {
+        const val TAG = "RegisterActivity"
     }
 }

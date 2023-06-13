@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.barkit.app.R
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.ActivityLoginBinding
-import com.barkit.app.home.HomeActivity
+import com.barkit.app.home.HomePageActivity
 import com.barkit.app.utils.isValidEmail
 import com.barkit.app.utils.isValidPassword
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,6 +30,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             btnLogin.setOnClickListener(this@LoginActivity)
             btnRegister.setOnClickListener(this@LoginActivity)
         }
+
+        setLoading(false)
     }
 
     override fun onClick(v: View) {
@@ -54,17 +58,26 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             when (it) {
                                 is Resource.Success -> {
                                     Log.d(TAG, "Login Success: ${it.data?.renter?.fullName}")
+                                    setLoading(false)
                                     val homeIntent =
-                                        Intent(this@LoginActivity, HomeActivity::class.java)
+                                        Intent(this@LoginActivity, HomePageActivity::class.java)
                                     startActivity(homeIntent)
                                 }
 
                                 is Resource.Loading -> {
+                                    setLoading(true)
                                     Log.d(TAG, "Login Process...")
                                 }
 
                                 is Resource.Error -> {
+                                    setLoading(false)
                                     Log.e(TAG, "Login Error: ${it.message}")
+                                    Toast.makeText(
+                                        this@LoginActivity,
+                                        "Login Error: ${it.message}",
+                                        Toast.LENGTH_LONG
+                                    )
+                                        .show()
                                 }
                             }
                         }
@@ -77,6 +90,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(registerIntent)
             }
         }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.progressBar.isVisible = isLoading
     }
 
     private companion object {

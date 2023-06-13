@@ -16,16 +16,16 @@ class AuthRepositoryImpl(
     private val apiService: ApiService,
     private val sessionManager: SessionManager
 ) : AuthRepository {
-    override fun login(email: String, password: String): Flow<Resource<User>> = flow {
+    override fun login(identifier: String, password: String): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
 
         try {
-            val loginRequest = LoginRequest(email, password)
+            val loginRequest = LoginRequest(identifier, password)
             val response = apiService.login(loginRequest)
             val user = response.data.toDomainModel()
 
             sessionManager.createLoginSession()
-            sessionManager.saveUserToken(user.token)
+            sessionManager.saveUserInformation(user.token, user.renter.username)
 
             emit(Resource.Success(user))
         } catch (e: Exception) {

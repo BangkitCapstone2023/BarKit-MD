@@ -12,8 +12,6 @@ data class LoginResponse(
 )
 
 data class UserResponse(
-    @field:SerializedName("email")
-    val email: String,
     @field:SerializedName("token")
     val token: String,
     @field:SerializedName("renter")
@@ -31,6 +29,12 @@ data class RenterResponse(
     val phone: String,
     @field:SerializedName("fullName")
     val fullName: String,
+    @field:SerializedName("isLessor")
+    val isLessor: Boolean,
+    @field:SerializedName("email")
+    val email: String,
     @field:SerializedName("username")
     val username: String,
+    @field:SerializedName("email_verified")
+    val emailVerified: Boolean
 )

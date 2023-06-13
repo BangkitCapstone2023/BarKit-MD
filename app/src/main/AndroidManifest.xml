@@ -16,6 +16,16 @@
         android:theme="@style/Theme.Barkit"
         tools:targetApi="31">
         <activity
+            android:name=".addstore.AddStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.HomePageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_page" />
+        <activity
+            android:name=".order.OrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".detail.DetailActivity"
             android:exported="false" />
         <activity

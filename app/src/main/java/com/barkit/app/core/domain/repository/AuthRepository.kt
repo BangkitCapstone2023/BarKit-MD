@@ -5,7 +5,7 @@ import com.barkit.app.core.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
-    fun login(email: String, password: String): Flow<Resource<User>>
+    fun login(identifier: String, password: String): Flow<Resource<User>>
 
     fun register(
         fullName: String,

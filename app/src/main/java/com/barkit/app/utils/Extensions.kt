@@ -9,6 +9,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.barkit.app.core.data.model.response.CategoryResponse
 import com.barkit.app.core.data.model.response.DashboardDataResponse
 import com.barkit.app.core.data.model.response.LessorResponse
+import com.barkit.app.core.data.model.response.OrderResponse
 import com.barkit.app.core.data.model.response.ProductDetailResponse
 import com.barkit.app.core.data.model.response.ProductResponse
 import com.barkit.app.core.data.model.response.RenterResponse
@@ -17,6 +18,7 @@ import com.barkit.app.core.data.model.response.UserResponse
 import com.barkit.app.core.domain.model.Category
 import com.barkit.app.core.domain.model.DashboardData
 import com.barkit.app.core.domain.model.Lessor
+import com.barkit.app.core.domain.model.Order
 import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.domain.model.ProductDetail
 import com.barkit.app.core.domain.model.Renter
@@ -35,10 +37,10 @@ fun String.isValidPassword(): Boolean {
     return this.isNotEmpty() && this.length >= 6
 }
 
-fun UserResponse.toDomainModel(): User = User(email, token, renter.toDomainModel())
+fun UserResponse.toDomainModel(): User = User(token, renter.toDomainModel())
 
 fun RenterResponse.toDomainModel(): Renter = Renter(
-    renterId, address, gender, phone, fullName, username
+    renterId, address, gender, phone, fullName, isLessor, email, username, emailVerified
 )
 
 fun DashboardDataResponse.toDomainModel(): DashboardData = DashboardData(
@@ -86,6 +88,18 @@ fun ProductDetailResponse.toDomainModel(): ProductDetail = ProductDetail(
 
 fun LessorResponse.toDomainModel(): Lessor = Lessor(
     storeAddress, storePhone, storeActive, fullName, storeEmail, storeFullName
+)
+
+fun OrderResponse.toDomainModel(): Order = Order(
+    deliveryAddress,
+    endRentDate,
+    quantityOrder,
+    productId,
+    paymentUse,
+    startRentDate,
+    courier,
+    orderId,
+    status
 )
 
 fun ImageView.loadImage(url: String, requestOptions: RequestOptions = RequestOptions()) {

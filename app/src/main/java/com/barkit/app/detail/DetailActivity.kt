@@ -1,10 +1,12 @@
 package com.barkit.app.detail
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.barkit.app.core.domain.model.ProductDetail
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.ActivityDetailBinding
+import com.barkit.app.order.OrderActivity
 import com.barkit.app.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,6 +32,12 @@ class DetailActivity : AppCompatActivity() {
                     is Resource.Loading -> {}
                     is Resource.Error -> {}
                 }
+            }
+
+            binding.btnRent.setOnClickListener {
+                val orderIntent = Intent(this@DetailActivity, OrderActivity::class.java)
+                orderIntent.putExtra(OrderActivity.EXTRA_PRODUCT_ID, id)
+                startActivity(orderIntent)
             }
         }
     }

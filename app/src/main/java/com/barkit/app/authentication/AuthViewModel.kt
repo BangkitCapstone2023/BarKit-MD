@@ -3,15 +3,13 @@ package com.barkit.app.authentication
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
 import com.barkit.app.core.domain.model.User
 import com.barkit.app.core.domain.usecase.AuthUseCase
 import com.barkit.app.core.utils.Resource
-import kotlinx.coroutines.launch
 
 class AuthViewModel(private val useCase: AuthUseCase) : ViewModel() {
-    fun login(email: String, password: String): LiveData<Resource<User>> =
-        useCase.login(email, password).asLiveData()
+    fun login(identifier: String, password: String): LiveData<Resource<User>> =
+        useCase.login(identifier, password).asLiveData()
 
     fun register(
         fullName: String,

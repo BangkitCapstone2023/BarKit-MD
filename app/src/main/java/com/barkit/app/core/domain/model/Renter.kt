@@ -6,5 +6,8 @@ data class Renter(
     val gender: String,
     val phone: String,
     val fullName: String,
+    val isLessor: Boolean,
+    val email: String,
     val username: String,
+    val emailVerified: Boolean
 )

@@ -6,8 +6,8 @@ import com.barkit.app.core.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 class AuthUseCaseImpl(private val repository: AuthRepository) : AuthUseCase {
-    override fun login(email: String, password: String): Flow<Resource<User>> =
-        repository.login(email, password)
+    override fun login(identifier: String, password: String): Flow<Resource<User>> =
+        repository.login(identifier, password)
 
     override fun register(
         fullName: String,

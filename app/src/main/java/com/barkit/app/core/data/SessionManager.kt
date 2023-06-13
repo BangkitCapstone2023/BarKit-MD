@@ -16,9 +16,10 @@ class SessionManager(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun saveUserToken(token: String) {
+    suspend fun saveUserInformation(token: String, username: String) {
         dataStore.edit { preferences ->
             preferences[TOKEN_KEY] = token
+            preferences[USERNAME_KEY] = username
         }
     }
 
@@ -40,8 +41,15 @@ class SessionManager(private val dataStore: DataStore<Preferences>) {
         }
     }
 
+    fun getUsername(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[USERNAME_KEY] ?: ""
+        }
+    }
+
     companion object {
         private val LOGIN_KEY = booleanPreferencesKey("isLogin")
         private val TOKEN_KEY = stringPreferencesKey("userToken")
+        private val USERNAME_KEY = stringPreferencesKey("username")
     }
 }
