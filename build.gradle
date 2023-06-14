@@ -8,6 +8,10 @@ buildscript {
     ext.koin_version = "3.4.0"
     ext.glide_version = "4.15.1"
     ext.civ_version = "3.1.0"
+
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.15'
+    }
 }
 
 plugins {

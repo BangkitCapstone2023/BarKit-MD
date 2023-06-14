@@ -13,6 +13,7 @@ import com.barkit.app.core.data.model.response.OrderResponse
 import com.barkit.app.core.data.model.response.ProductDetailResponse
 import com.barkit.app.core.data.model.response.ProductResponse
 import com.barkit.app.core.data.model.response.RenterResponse
+import com.barkit.app.core.data.model.response.StoreResponse
 import com.barkit.app.core.data.model.response.SubcategoryResponse
 import com.barkit.app.core.data.model.response.UserResponse
 import com.barkit.app.core.domain.model.Category
@@ -22,6 +23,7 @@ import com.barkit.app.core.domain.model.Order
 import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.domain.model.ProductDetail
 import com.barkit.app.core.domain.model.Renter
+import com.barkit.app.core.domain.model.Store
 import com.barkit.app.core.domain.model.Subcategory
 import com.barkit.app.core.domain.model.User
 import com.bumptech.glide.Glide
@@ -100,6 +102,20 @@ fun OrderResponse.toDomainModel(): Order = Order(
     courier,
     orderId,
     status
+)
+
+fun StoreResponse.toDomainModel(): Store = Store(
+    renterId,
+    storeAddress,
+    courierId,
+    storePhone,
+    storeActive,
+    fullName,
+    storeEmail,
+    storeFullName,
+    lessorId,
+    email,
+    username
 )
 
 fun ImageView.loadImage(url: String, requestOptions: RequestOptions = RequestOptions()) {

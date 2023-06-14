@@ -45,7 +45,7 @@
             tools:text="Pending" />
 
         <ImageView
-            android:id="@+id/img_product"
+            android:id="@+id/btn_img_product"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginTop="16dp"
@@ -64,8 +64,8 @@
             android:maxLines="1"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/img_product"
-            app:layout_constraintTop_toTopOf="@+id/img_product"
+            app:layout_constraintStart_toEndOf="@+id/btn_img_product"
+            app:layout_constraintTop_toTopOf="@+id/btn_img_product"
             tools:text="Camera Canon" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total_price"
-            app:layout_constraintStart_toStartOf="@+id/img_product"
+            app:layout_constraintStart_toStartOf="@+id/btn_img_product"
             app:layout_constraintTop_toTopOf="@+id/btn_rent" />
 
         <TextView
@@ -104,7 +104,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/rent_again"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_product" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_img_product" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
