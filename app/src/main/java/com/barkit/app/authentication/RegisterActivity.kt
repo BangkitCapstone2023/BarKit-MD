@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener,
                 val fullName = edtFullName.text.toString().trim()
                 val username = edtUsername.text.toString().trim()
                 val email = edtEmail.text.toString().trim()
-                val password = edtEmail.text.toString().trim()
+                val password = edtPassword.text.toString().trim()
                 val address = edtAddress.text.toString().trim()
                 val phone = edtPhone.text.toString().trim()
 

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -79,4 +80,8 @@ dependencies {
 
     // Sweet Alert
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:32.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

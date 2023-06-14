@@ -4,14 +4,18 @@ import com.barkit.app.core.data.ApiService
 import com.barkit.app.core.data.SessionManager
 import com.barkit.app.core.data.repository.AuthRepositoryImpl
 import com.barkit.app.core.data.repository.GeneralRepositoryImpl
+import com.barkit.app.core.data.repository.LessorRepositoryImpl
 import com.barkit.app.core.data.repository.RenterRepositoryImpl
 import com.barkit.app.core.domain.repository.AuthRepository
 import com.barkit.app.core.domain.repository.GeneralRepository
+import com.barkit.app.core.domain.repository.LessorRepository
 import com.barkit.app.core.domain.repository.RenterRepository
 import com.barkit.app.core.domain.usecase.AuthUseCase
 import com.barkit.app.core.domain.usecase.AuthUseCaseImpl
 import com.barkit.app.core.domain.usecase.GeneralUseCase
 import com.barkit.app.core.domain.usecase.GeneralUseCaseImpl
+import com.barkit.app.core.domain.usecase.LessorUseCase
+import com.barkit.app.core.domain.usecase.LessorUseCaseImpl
 import com.barkit.app.core.domain.usecase.RenterUseCase
 import com.barkit.app.core.domain.usecase.RenterUseCaseImpl
 import com.barkit.app.utils.dataStore
@@ -50,10 +54,12 @@ val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
     single<GeneralRepository> { GeneralRepositoryImpl(get(), get()) }
     single<RenterRepository> { RenterRepositoryImpl(get(), get()) }
+    single<LessorRepository> { LessorRepositoryImpl(get(), get()) }
 }
 
 val useCaseModule = module {
     single<AuthUseCase> { AuthUseCaseImpl(get()) }
     single<GeneralUseCase> { GeneralUseCaseImpl(get()) }
     single<RenterUseCase> { RenterUseCaseImpl(get()) }
+    single<LessorUseCase> { LessorUseCaseImpl(get()) }
 }

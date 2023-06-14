@@ -64,4 +64,7 @@
     <string name="store_phone">Store Phone</string>
     <string name="add_store">Add Store</string>
     <string name="cancel">Cancel</string>
+    <string name="all_product">All Product</string>
+    <string name="add_product_photo">Add Product Photo</string>
+    <string name="add_product">Add Product</string>
 </resources>
