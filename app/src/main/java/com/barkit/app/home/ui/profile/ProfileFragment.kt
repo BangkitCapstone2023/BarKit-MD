@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.barkit.app.R
 import com.barkit.app.addstore.AddStoreActivity
+import com.barkit.app.authentication.LoginActivity
 import com.barkit.app.core.domain.model.Renter
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.FragmentProfileBinding
@@ -41,6 +43,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
 
         binding.btnMyStore.setOnClickListener(this)
+        binding.btnLogout.setOnClickListener(this)
     }
 
     override fun onDestroy() {
@@ -57,6 +60,25 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                 } else {
                     val addStoreIntent = Intent(activity, AddStoreActivity::class.java)
                     startActivity(addStoreIntent)
+                }
+            }
+
+            R.id.btn_logout -> {
+                profileViewModel.logout().observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Resource.Success -> {
+                            val loginIntent = Intent(activity, LoginActivity::class.java)
+                            startActivity(loginIntent)
+                            activity?.finish()
+                        }
+
+                        is Resource.Loading -> {}
+
+                        is Resource.Error -> {
+                            Toast.makeText(requireContext(), "Error Logout!", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
                 }
             }
         }

@@ -5,6 +5,7 @@ import com.barkit.app.core.data.ApiService
 import com.barkit.app.core.data.SessionManager
 import com.barkit.app.core.domain.model.DashboardData
 import com.barkit.app.core.domain.model.ProductDetail
+import com.barkit.app.core.domain.model.SearchProduct
 import com.barkit.app.core.domain.repository.GeneralRepository
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.utils.toDomainModel
@@ -39,6 +40,20 @@ class GeneralRepositoryImpl(
             emit(Resource.Success(productDetail))
         } catch (e: Exception) {
             Log.e(TAG, "getProductDetail: $e")
+            emit(Resource.Error(e.toString()))
+        }
+    }
+
+    override fun searchProduct(query: String): Flow<Resource<List<SearchProduct>>> = flow {
+        emit(Resource.Loading())
+
+        try {
+            val response = apiService.searchProduct(query)
+            val listProduct = response.data.map { it.toDomainModel() }
+
+            emit(Resource.Success(listProduct))
+        } catch (e: Exception) {
+            Log.e(TAG, "searchProduct: $e")
             emit(Resource.Error(e.toString()))
         }
     }

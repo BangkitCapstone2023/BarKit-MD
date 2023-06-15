@@ -8,6 +8,7 @@ import com.barkit.app.home.ui.order.UserOrderViewModel
 import com.barkit.app.home.ui.profile.ProfileViewModel
 import com.barkit.app.main.MainViewModel
 import com.barkit.app.order.OrderViewModel
+import com.barkit.app.search.SearchViewModel
 import com.barkit.app.store.StoreViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -22,4 +23,5 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get()) }
     viewModel { AddStoreViewModel(get()) }
     viewModel { StoreViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
 }

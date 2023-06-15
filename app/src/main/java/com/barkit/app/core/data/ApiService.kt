@@ -9,10 +9,12 @@ import com.barkit.app.core.data.model.response.AddStoreResponse
 import com.barkit.app.core.data.model.response.DashboardResponse
 import com.barkit.app.core.data.model.response.ListOrderResponse
 import com.barkit.app.core.data.model.response.LoginResponse
+import com.barkit.app.core.data.model.response.LogoutResponse
 import com.barkit.app.core.data.model.response.ProductDetailDataResponse
 import com.barkit.app.core.data.model.response.RegisterResponse
 import com.barkit.app.core.data.model.response.RentOrderResponse
 import com.barkit.app.core.data.model.response.RenterProfileResponse
+import com.barkit.app.core.data.model.response.SearchResultResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -22,6 +24,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @POST("login")
@@ -34,8 +37,18 @@ interface ApiService {
         @Body registerRequest: RegisterRequest
     ): RegisterResponse
 
+    @POST("logout")
+    suspend fun logout(
+        @Header("Authorization") token: String,
+    ): LogoutResponse
+
     @GET("home")
     suspend fun getDashboard(): DashboardResponse
+
+    @GET("search")
+    suspend fun searchProduct(
+        @Query("title") query: String
+    ): SearchResultResponse
 
     @GET("products/{id}")
     suspend fun getProductDetail(

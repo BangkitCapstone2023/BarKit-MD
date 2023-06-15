@@ -17,7 +17,9 @@ import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 object Helper {
     private const val FILENAME_FORMAT = "dd-MMM-yyyy"
@@ -102,5 +104,15 @@ object Helper {
         } while (streamLength > MAXIMAL_SIZE)
         bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
         return file
+    }
+
+    fun getDateRange(startDateString: String, endDateString: String): Int {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val startDate = dateFormat.parse(startDateString) as Date
+        val endDate = dateFormat.parse(endDateString) as Date
+
+        val diff = endDate.time - startDate.time
+
+        return TimeUnit.MILLISECONDS.toDays(diff).toInt()
     }
 }

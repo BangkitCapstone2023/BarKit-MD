@@ -30,4 +30,6 @@ class RenterUseCaseImpl(private val repository: RenterRepository) : RenterUseCas
     override fun getListOrder(): Flow<Resource<List<Order>>> = repository.getListOrder()
 
     override fun getProfile(): Flow<Resource<Renter>> = repository.getProfile()
+
+    override fun logout(): Flow<Resource<Boolean>> = repository.logout()
 }

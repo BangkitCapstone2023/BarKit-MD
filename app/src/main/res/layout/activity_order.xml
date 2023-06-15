@@ -53,8 +53,8 @@
                 android:maxLines="1"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/tv_rented_item"
-                app:layout_constraintStart_toEndOf="@+id/btn_img_product"
-                app:layout_constraintTop_toTopOf="@+id/btn_img_product"
+                app:layout_constraintStart_toEndOf="@+id/img_product"
+                app:layout_constraintTop_toTopOf="@+id/img_product"
                 tools:text="Camera Canon 8K Resolution" />
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/red"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_img_product"
+                app:layout_constraintBottom_toBottomOf="@+id/img_product"
                 app:layout_constraintStart_toStartOf="@+id/tv_lessor_name"
                 tools:text="Rp.40.000/hari" />
 
@@ -88,7 +88,7 @@
                 android:background="@drawable/bg_subtract_qty"
                 android:src="@drawable/ic_remove"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_img_product" />
+                app:layout_constraintTop_toBottomOf="@+id/img_product" />
 
             <TextView
                 android:id="@+id/tv_quantity"

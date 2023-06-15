@@ -26,5 +26,5 @@ data class ProductResponse(
     @field:SerializedName("lessor_id")
     val lessorId: String,
     @field:SerializedName("username")
-    val username: String
+    val username: String? = null
 )

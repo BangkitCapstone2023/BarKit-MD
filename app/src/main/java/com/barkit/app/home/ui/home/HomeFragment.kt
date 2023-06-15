@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.utils.Resource
 import com.barkit.app.databinding.FragmentHomeBinding
 import com.barkit.app.detail.DetailActivity
+import com.barkit.app.search.SearchActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(), ProductAdapter.OnClickListener {
@@ -50,6 +52,24 @@ class HomeFragment : Fragment(), ProductAdapter.OnClickListener {
                 is Resource.Error -> {}
             }
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    val searchIntent = Intent(requireContext(), SearchActivity::class.java)
+                    searchIntent.putExtra(SearchActivity.EXTRA_QUERY, query)
+                    startActivity(searchIntent)
+
+                    return true
+                }
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
     }
 
     override fun onProductClick(product: Product) {
@@ -87,7 +107,7 @@ class HomeFragment : Fragment(), ProductAdapter.OnClickListener {
                 this.layoutManager = layoutManager
                 this.adapter = productAdapter
 
-                setHasFixedSize(true)
+                setHasFixedSize(false)
             }
         }
     }
