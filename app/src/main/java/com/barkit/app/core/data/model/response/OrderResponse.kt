@@ -29,5 +29,8 @@ data class OrderResponse(
     val orderId: String,
 
     @field:SerializedName("status")
-    val status: String
+    val status: String,
+
+    @field:SerializedName("product")
+    val product: ProductResponse
 )

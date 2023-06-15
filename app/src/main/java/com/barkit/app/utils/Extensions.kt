@@ -13,6 +13,7 @@ import com.barkit.app.core.data.model.response.OrderResponse
 import com.barkit.app.core.data.model.response.ProductDetailResponse
 import com.barkit.app.core.data.model.response.ProductResponse
 import com.barkit.app.core.data.model.response.RenterResponse
+import com.barkit.app.core.data.model.response.SearchProductResponse
 import com.barkit.app.core.data.model.response.StoreResponse
 import com.barkit.app.core.data.model.response.SubcategoryResponse
 import com.barkit.app.core.data.model.response.UserResponse
@@ -23,6 +24,7 @@ import com.barkit.app.core.domain.model.Order
 import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.domain.model.ProductDetail
 import com.barkit.app.core.domain.model.Renter
+import com.barkit.app.core.domain.model.SearchProduct
 import com.barkit.app.core.domain.model.Store
 import com.barkit.app.core.domain.model.Subcategory
 import com.barkit.app.core.domain.model.User
@@ -101,7 +103,8 @@ fun OrderResponse.toDomainModel(): Order = Order(
     startRentDate,
     courier,
     orderId,
-    status
+    status,
+    product.toDomainModel()
 )
 
 fun StoreResponse.toDomainModel(): Store = Store(
@@ -116,6 +119,19 @@ fun StoreResponse.toDomainModel(): Store = Store(
     lessorId,
     email,
     username
+)
+
+fun SearchProductResponse.toDomainModel(): SearchProduct = SearchProduct(
+    quantity,
+    subCategory,
+    storeAddress,
+    price,
+    productId,
+    imageUrl,
+    storePhone,
+    title,
+    category,
+    storeFullName
 )
 
 fun ImageView.loadImage(url: String, requestOptions: RequestOptions = RequestOptions()) {

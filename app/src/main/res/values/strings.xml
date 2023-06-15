@@ -67,4 +67,6 @@
     <string name="all_product">All Product</string>
     <string name="add_product_photo">Add Product Photo</string>
     <string name="add_product">Add Product</string>
+    <string name="want_to_rent">Mau sewa apa hari ini?</string>
+    <string name="logout">Logout</string>
 </resources>

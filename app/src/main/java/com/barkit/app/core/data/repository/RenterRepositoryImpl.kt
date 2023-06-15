@@ -101,6 +101,25 @@ class RenterRepositoryImpl(
         }
     }
 
+    override fun logout(): Flow<Resource<Boolean>> = flow {
+        emit(Resource.Loading())
+
+        try {
+            val token = sessionManager.getUserToken().first()
+            val response = apiService.logout("Bearer $token")
+
+            if (response.status == 200) {
+                sessionManager.clearLoginSession()
+                emit(Resource.Success(true))
+            } else {
+                emit(Resource.Error(response.message))
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "logout: $e")
+            emit(Resource.Error(e.toString()))
+        }
+    }
+
     private companion object {
         const val TAG = "RenterRepositoryImpl"
     }

@@ -9,5 +9,6 @@ data class Order(
     val startRentDate: String,
     val courier: String,
     val orderId: String,
-    val status: String
+    val status: String,
+    val product: Product
 )

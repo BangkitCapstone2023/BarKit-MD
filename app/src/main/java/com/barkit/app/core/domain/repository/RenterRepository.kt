@@ -21,4 +21,6 @@ interface RenterRepository {
     fun getListOrder(): Flow<Resource<List<Order>>>
 
     fun getProfile(): Flow<Resource<Renter>>
+
+    fun logout(): Flow<Resource<Boolean>>
 }

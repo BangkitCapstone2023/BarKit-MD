@@ -12,5 +12,5 @@ data class Product(
 	val imageId: String,
 	val createAt: String,
 	val lessorId: String,
-	val username: String
+	val username: String? = null
 )
