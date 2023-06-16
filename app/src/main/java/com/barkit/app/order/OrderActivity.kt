@@ -187,14 +187,9 @@ class OrderActivity : AppCompatActivity(), View.OnClickListener {
                     SweetAlertDialog(this@OrderActivity, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText("Order Success!")
                         .setContentText("You're order is successful!")
-                        .setConfirmButton("See my orders") {
+                        .setConfirmButton("OK") {
                             finish()
                         }
-                        .setConfirmButtonBackgroundColor(R.color.red)
-                        .setCancelButton("Back") {
-                            finish()
-                        }
-                        .setCancelButtonBackgroundColor(R.color.gray_400)
                         .show()
                 }
 

@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imd_product"
+            android:id="@+id/img_product"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
@@ -34,8 +34,8 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imd_product"
-            app:layout_constraintTop_toTopOf="@+id/imd_product"
+            app:layout_constraintStart_toEndOf="@+id/img_product"
+            app:layout_constraintTop_toTopOf="@+id/img_product"
             tools:text="Kamera" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/red"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imd_product"
+            app:layout_constraintBottom_toBottomOf="@+id/img_product"
             app:layout_constraintEnd_toEndOf="@+id/tv_product_category"
             app:layout_constraintStart_toStartOf="@+id/tv_product_category"
             tools:text="Rp.40.000" />

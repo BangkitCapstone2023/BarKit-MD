@@ -20,7 +20,7 @@ data class ProductResponse(
     @field:SerializedName("category")
     val category: String,
     @field:SerializedName("image_id")
-    val imageId: String,
+    val imageId: String? = null,
     @field:SerializedName("create_at")
     val createAt: String,
     @field:SerializedName("lessor_id")

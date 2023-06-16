@@ -1,6 +1,7 @@
 package com.barkit.app.core.domain.usecase
 
 import com.barkit.app.core.domain.model.Order
+import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.domain.model.Renter
 import com.barkit.app.core.domain.repository.RenterRepository
 import com.barkit.app.core.utils.Resource
@@ -32,4 +33,8 @@ class RenterUseCaseImpl(private val repository: RenterRepository) : RenterUseCas
     override fun getProfile(): Flow<Resource<Renter>> = repository.getProfile()
 
     override fun logout(): Flow<Resource<Boolean>> = repository.logout()
+
+    override fun addToCart(productId: String): Flow<Resource<Boolean>> = repository.addToCart(productId)
+
+    override fun getCartProduct(): Flow<Resource<List<Product>>> = repository.getCartProduct()
 }

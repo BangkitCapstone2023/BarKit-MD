@@ -3,6 +3,7 @@ package com.barkit.app.di
 import com.barkit.app.addstore.AddStoreViewModel
 import com.barkit.app.authentication.AuthViewModel
 import com.barkit.app.detail.DetailViewModel
+import com.barkit.app.home.ui.cart.CartViewModel
 import com.barkit.app.home.ui.home.HomeViewModel
 import com.barkit.app.home.ui.order.UserOrderViewModel
 import com.barkit.app.home.ui.profile.ProfileViewModel
@@ -17,8 +18,9 @@ val viewModelModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { AuthViewModel(get()) }
     viewModel { HomeViewModel(get()) }
-    viewModel { DetailViewModel(get()) }
+    viewModel { DetailViewModel(get(), get()) }
     viewModel { OrderViewModel(get(), get()) }
+    viewModel { CartViewModel(get()) }
     viewModel { UserOrderViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
     viewModel { AddStoreViewModel(get()) }

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.barkit.app.R
 import com.barkit.app.core.domain.model.Category
 import com.barkit.app.core.utils.Resource
@@ -182,11 +183,13 @@ class AddProductActivity : AppCompatActivity(), View.OnClickListener {
                 when (it) {
                     is Resource.Success -> {
                         setLoading(false)
-                        Toast.makeText(
-                            this@AddProductActivity,
-                            "Add Product Success",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        SweetAlertDialog(this@AddProductActivity, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Success!")
+                            .setContentText("Adding product is successful!")
+                            .setConfirmButton("OK") {
+                                finish()
+                            }
+                            .show()
                     }
 
                     is Resource.Loading -> {
@@ -200,11 +203,14 @@ class AddProductActivity : AppCompatActivity(), View.OnClickListener {
 
                     is Resource.Error -> {
                         setLoading(false)
-                        Toast.makeText(
-                            this@AddProductActivity,
-                            "Upload error: ${it.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        SweetAlertDialog(this@AddProductActivity, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error!")
+                            .setContentText(it.message ?: "Order error without message!")
+                            .setConfirmButton("OK") {
+                                finish()
+                            }
+                            .setConfirmButtonBackgroundColor(R.color.red)
+                            .show()
                     }
                 }
             }
