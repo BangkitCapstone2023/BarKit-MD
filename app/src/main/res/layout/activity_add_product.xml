@@ -1,137 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".store.product.AddProductActivity">
 
-    <ImageButton
-        android:id="@+id/btn_img_product"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/gray_300"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_add_photo"
-        style="@style/TextAppearance.MdcTypographyStyles.Headline5"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_product_photo"
-        android:textColor="@android:color/darker_gray"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_img_product"
-        app:layout_constraintEnd_toEndOf="@+id/btn_img_product"
-        app:layout_constraintStart_toStartOf="@+id/btn_img_product"
-        app:layout_constraintTop_toTopOf="@+id/btn_img_product" />
+        android:paddingBottom="8dp">
 
-    <EditText
-        android:id="@+id/edt_product_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Enter product title"
-        android:inputType="text"
-        android:lines="1"
-        app:layout_constraintEnd_toEndOf="@+id/btn_img_product"
-        app:layout_constraintStart_toStartOf="@+id/btn_img_product"
-        app:layout_constraintTop_toBottomOf="@+id/btn_img_product" />
+        <ImageButton
+            android:id="@+id/btn_img_product"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/gray_300"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_product_desc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Enter product description"
-        android:inputType="text"
-        android:lines="1"
-        app:layout_constraintEnd_toEndOf="@+id/edt_product_title"
-        app:layout_constraintStart_toStartOf="@+id/edt_product_title"
-        app:layout_constraintTop_toBottomOf="@+id/edt_product_title" />
+        <TextView
+            android:id="@+id/tv_add_photo"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_product_photo"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_img_product"
+            app:layout_constraintEnd_toEndOf="@+id/btn_img_product"
+            app:layout_constraintStart_toStartOf="@+id/btn_img_product"
+            app:layout_constraintTop_toTopOf="@+id/btn_img_product" />
 
-    <EditText
-        android:id="@+id/edt_product_price"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Enter product price"
-        android:inputType="number"
-        android:lines="1"
-        app:layout_constraintEnd_toEndOf="@+id/edt_product_desc"
-        app:layout_constraintStart_toStartOf="@+id/edt_product_desc"
-        app:layout_constraintTop_toBottomOf="@+id/edt_product_desc" />
+        <EditText
+            android:id="@+id/edt_product_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Enter product title"
+            android:inputType="text"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/btn_img_product"
+            app:layout_constraintStart_toStartOf="@+id/btn_img_product"
+            app:layout_constraintTop_toBottomOf="@+id/btn_img_product" />
 
-    <EditText
-        android:id="@+id/edt_product_qty"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Enter product quantity"
-        android:inputType="number"
-        android:lines="1"
-        app:layout_constraintEnd_toEndOf="@+id/edt_product_price"
-        app:layout_constraintStart_toStartOf="@+id/edt_product_price"
-        app:layout_constraintTop_toBottomOf="@+id/edt_product_price" />
+        <EditText
+            android:id="@+id/edt_product_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Enter product description"
+            android:inputType="text"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/edt_product_title"
+            app:layout_constraintStart_toStartOf="@+id/edt_product_title"
+            app:layout_constraintTop_toBottomOf="@+id/edt_product_title" />
 
-    <Spinner
-        android:id="@+id/spinner_category"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/edt_product_qty"
-        app:layout_constraintStart_toStartOf="@+id/edt_product_qty"
-        app:layout_constraintTop_toBottomOf="@+id/edt_product_qty" />
+        <EditText
+            android:id="@+id/edt_product_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Enter product price"
+            android:inputType="number"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/edt_product_desc"
+            app:layout_constraintStart_toStartOf="@+id/edt_product_desc"
+            app:layout_constraintTop_toBottomOf="@+id/edt_product_desc" />
 
-    <Spinner
-        android:id="@+id/spinner_sub_category"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/spinner_category"
-        app:layout_constraintStart_toStartOf="@+id/spinner_category"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_category" />
+        <EditText
+            android:id="@+id/edt_product_qty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Enter product quantity"
+            android:inputType="number"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/edt_product_price"
+            app:layout_constraintStart_toStartOf="@+id/edt_product_price"
+            app:layout_constraintTop_toBottomOf="@+id/edt_product_price" />
 
-    <com.barkit.app.customview.MyButton
-        android:id="@+id/btn_add_product"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/add_product"
-        app:layout_constraintEnd_toEndOf="@+id/spinner_sub_category"
-        app:layout_constraintStart_toStartOf="@+id/spinner_sub_category"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_sub_category" />
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_product_qty"
+            app:layout_constraintStart_toStartOf="@+id/edt_product_qty"
+            app:layout_constraintTop_toBottomOf="@+id/edt_product_qty" />
 
-    <com.barkit.app.customview.MyButton
-        android:id="@+id/btn_cancel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/add_product"
-        app:isSecondary="true"
-        app:layout_constraintEnd_toEndOf="@+id/btn_add_product"
-        app:layout_constraintStart_toStartOf="@+id/btn_add_product"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_product" />
+        <Spinner
+            android:id="@+id/spinner_sub_category"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_category"
+            app:layout_constraintStart_toStartOf="@+id/spinner_category"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_category" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_form_upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="btn_img_product,tv_add_photo,edt_product_title,edt_product_desc,edt_product_price,spinner_category,spinner_sub_category,btn_add_product" />
+        <com.barkit.app.customview.MyButton
+            android:id="@+id/btn_add_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_product"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_sub_category"
+            app:layout_constraintStart_toStartOf="@+id/spinner_sub_category"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_sub_category" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.barkit.app.customview.MyButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_product"
+            app:isSecondary="true"
+            app:layout_constraintEnd_toEndOf="@+id/btn_add_product"
+            app:layout_constraintStart_toStartOf="@+id/btn_add_product"
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_product" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_form_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="btn_img_product,tv_add_photo,edt_product_title,edt_product_desc,edt_product_price,spinner_category,spinner_sub_category,btn_add_product" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

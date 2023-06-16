@@ -1,5 +1,6 @@
 package com.barkit.app.core.data
 
+import com.barkit.app.core.data.model.request.AddCartRequest
 import com.barkit.app.core.data.model.request.AddStoreRequest
 import com.barkit.app.core.data.model.request.LoginRequest
 import com.barkit.app.core.data.model.request.OrderRequest
@@ -7,6 +8,7 @@ import com.barkit.app.core.data.model.request.RegisterRequest
 import com.barkit.app.core.data.model.response.AddProductResponse
 import com.barkit.app.core.data.model.response.AddStoreResponse
 import com.barkit.app.core.data.model.response.DashboardResponse
+import com.barkit.app.core.data.model.response.ListCartResponse
 import com.barkit.app.core.data.model.response.ListOrderResponse
 import com.barkit.app.core.data.model.response.LoginResponse
 import com.barkit.app.core.data.model.response.LogoutResponse
@@ -101,4 +103,18 @@ interface ApiService {
         @Part("subCategory") subCategory: RequestBody,
         @Part("quantity") quantity: RequestBody,
     ): AddProductResponse
+
+    @POST("{username}/products/{productId}/carts")
+    suspend fun addToCart(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+        @Path("productId") productId: String,
+        @Body cartRequest: AddCartRequest
+    )
+
+    @GET("{username}/carts")
+    suspend fun getListCart(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+    ): ListCartResponse
 }

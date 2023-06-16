@@ -2,6 +2,7 @@ package com.barkit.app.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.barkit.app.core.domain.model.ProductDetail
 import com.barkit.app.core.utils.Resource
@@ -31,6 +32,36 @@ class DetailActivity : AppCompatActivity() {
 
                     is Resource.Loading -> {}
                     is Resource.Error -> {}
+                }
+            }
+
+            binding.btnCart.setOnClickListener {
+                detailViewModel.addToCart(id).observe(this) {
+                    when (it) {
+                        is Resource.Success -> {
+                            Toast.makeText(
+                                this,
+                                "Success adding to cart!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        is Resource.Loading -> {
+                            Toast.makeText(
+                                this,
+                                "Adding to cart...",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                this,
+                                "Failed adding to cart: ${it.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             }
 

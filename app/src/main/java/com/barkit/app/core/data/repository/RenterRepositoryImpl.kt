@@ -3,8 +3,10 @@ package com.barkit.app.core.data.repository
 import android.util.Log
 import com.barkit.app.core.data.ApiService
 import com.barkit.app.core.data.SessionManager
+import com.barkit.app.core.data.model.request.AddCartRequest
 import com.barkit.app.core.data.model.request.OrderRequest
 import com.barkit.app.core.domain.model.Order
+import com.barkit.app.core.domain.model.Product
 import com.barkit.app.core.domain.model.Renter
 import com.barkit.app.core.domain.repository.RenterRepository
 import com.barkit.app.core.utils.Resource
@@ -116,6 +118,39 @@ class RenterRepositoryImpl(
             }
         } catch (e: Exception) {
             Log.e(TAG, "logout: $e")
+            emit(Resource.Error(e.toString()))
+        }
+    }
+
+    override fun addToCart(productId: String): Flow<Resource<Boolean>> = flow {
+        emit(Resource.Loading())
+
+        try {
+            val token = sessionManager.getUserToken().first()
+            val username = sessionManager.getUsername().first()
+            val requestBody = AddCartRequest(1)
+
+            apiService.addToCart("Bearer $token", username, productId, requestBody)
+
+            emit(Resource.Success(true))
+        } catch (e: Exception) {
+            Log.e(TAG, "addToCart: $e")
+            emit(Resource.Error(e.toString()))
+        }
+    }
+
+    override fun getCartProduct(): Flow<Resource<List<Product>>> = flow {
+        emit(Resource.Loading())
+
+        try {
+            val token = sessionManager.getUserToken().first()
+            val username = sessionManager.getUsername().first()
+            val response = apiService.getListCart("Bearer $token", username)
+            val listProduct = response.data.resultCart.map { it.toDomainModel() }
+
+            emit(Resource.Success(listProduct))
+        } catch (e: Exception) {
+            Log.e(TAG, "getCartProduct: $e")
             emit(Resource.Error(e.toString()))
         }
     }
